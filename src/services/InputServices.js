@@ -3,7 +3,7 @@ import { Input } from '../views/index.js';
 import { Lotto, Purchase } from '../models/index.js';
 
 class InputService {
-    static async getPurchasePrice() {
+    static async inputPurchase() {
         while (true) {
             try {
                 const purchasePrice = await Input.inputPurchasePrice();

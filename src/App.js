@@ -1,12 +1,15 @@
 import { InputService } from './services/index.js';
+import { Output } from './views/index.js';
 class App {
   async run() {
     // 1. 구입 금액 구하기
-    const purchasePrice = await InputService.getPurchasePrice();
+    const purchase = await InputService.inputPurchase();
 
     // 2. 구입 개수 계산하기
+    const purchaseCounts = purchase.calculateCounts();
 
     // 3. 구입 개수 출력하기
+    Output.printPurchaseCounts(purchaseCounts);
 
     // 4. 로또 번호 계산하기
 
