@@ -10,16 +10,16 @@ class Input {
         return +purchasePrice;
     }
 
-    static inputWinningNumbers() {
-        const winningNumbers = MissionUtils.Console.readLineAsync(INPUT.WINNING_NUMBERS);
+    static async inputWinningNumbers() {
+        const winningNumbers = await MissionUtils.Console.readLineAsync(INPUT.WINNING_NUMBERS);
 
         return winningNumbers;
     }
 
-    static inputBonusNumber() {
-        const bonusNumber = MissionUtils.Console.readLineAsync(INPUT.BONUS_NUMBER);
+    static async inputBonusNumber() {
+        const bonusNumber = await MissionUtils.Console.readLineAsync(INPUT.BONUS_NUMBER);
 
-        return bonusNumber;
+        return +bonusNumber;
     }
 
 };
