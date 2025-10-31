@@ -1,0 +1,7 @@
+// 로또 번호 계산하기 (구입 개수만큼)
+class LottoService {
+
+}
+
+export { LottoService };
+

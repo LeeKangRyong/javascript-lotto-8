@@ -3,4 +3,4 @@ class Calculator {
 
 };
 
-export default Calculator;
+export { Calculator };

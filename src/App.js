@@ -1,6 +1,8 @@
+import { InputService } from './services/index.js';
 class App {
   async run() {
     // 1. 구입 금액 구하기
+    const purchasePrice = await InputService.getPurchasePrice();
 
     // 2. 구입 개수 계산하기
 
@@ -11,9 +13,10 @@ class App {
     // 5. 로또 리스트 출력하기
 
     // 6. 당첨 번호 구하기
+    const winningNumbers = await InputService.getWinningNumbers();
 
     // 7. 보너스 번호 구하기
-
+    const bonusNumber = await InputService.getBonusNumber();
     // 8. 당첨 통계 계산하기
 
     // 9. 당첨 통계 출력하기
