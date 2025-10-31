@@ -1,4 +1,4 @@
-import { InputService } from './services/index.js';
+import { InputService, LottoService } from './services/index.js';
 import { Output } from './views/index.js';
 class App {
   async run() {
@@ -12,8 +12,10 @@ class App {
     Output.printPurchaseCounts(purchaseCounts);
 
     // 4. 로또 번호 계산하기
+    const lottoList = LottoService.getLottoList(purchaseCounts);
 
     // 5. 로또 리스트 출력하기
+    Output.printLottoList(lottoList, purchaseCounts);
 
     // 6. 당첨 번호 구하기
     const winningNumbers = await InputService.getWinningNumbers();

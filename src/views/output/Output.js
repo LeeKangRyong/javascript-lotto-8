@@ -13,6 +13,12 @@ class Output {
         MissionUtils.Console.print(`${purchaseCounts}${OUTPUT.PURCHASE_COUNTS}`);
     }
 
+    static printLottoList(lottoList, purchaseCounts) {
+        for (let i = 0; i < purchaseCounts; i++) {
+            MissionUtils.Console.print(lottoList[i]);
+        }
+    }
+
 };
 
 export { Output };
