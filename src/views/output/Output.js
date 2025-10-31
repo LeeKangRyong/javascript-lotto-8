@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { OUTPUT } from "./utils/OutputConstants.js";
+import { OUTPUT, OutputFormatter } from "../index.js";
 
 class Output {
     constructor() {}
@@ -14,9 +14,10 @@ class Output {
     }
 
     static printLottoList(lottoList, purchaseCounts) {
-        for (let i = 0; i < purchaseCounts; i++) {
-            MissionUtils.Console.print(lottoList[i]);
+        for (let lotto of lottoList) {
+            MissionUtils.Console.print(OutputFormatter.sortLottobyAsc(lotto));
         }
+        this.#printSpace();
     }
 
 };

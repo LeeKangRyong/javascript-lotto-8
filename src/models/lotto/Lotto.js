@@ -1,20 +1,25 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { LOTTO } from "./utils/LottoConstants.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { LOTTO, LOTTO_ERROR, LottoValidator } from '../index.js';
+import { WoowaError } from '../../shared/index.js';
+
 class Lotto {
   #numbers;
 
   constructor(numbers) {
-    // this.#validate(numbers);
-    this.#numbers = numbers;
+    const splittedNumbers = this.#splitNumbers(numbers);
+    this.#validate(splittedNumbers);
+    this.#numbers = splittedNumbers;
   }
 
-  // #validate(numbers) {
-  //   if (numbers.length !== 6) {
-  //     throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
-  //   }
-  // }
+  #splitNumbers(numbers) {
+    const splitted = numbers.split(LOTTO.NUMBER_SPLITTER);
+    return splitted.map(number => +number);
+  }
 
-  // TODO: 추가 기능 구현
+  #validate(splittedNumbers) {
+    LottoValidator.isValidWinningNumbers(splittedNumbers);
+  }
+
   static getLotto() {
     return MissionUtils.Random.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.COUNTS);
   }
