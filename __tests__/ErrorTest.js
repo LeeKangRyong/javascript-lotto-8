@@ -1,5 +1,4 @@
-import { ERROR_PREFIX } from "../src/shared/error/utils/ErrorConstants.js";
-import { WoowaError } from "../src/shared/index.js";
+import { WoowaError, ERROR_PREFIX } from "../src/shared/index.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 describe('일반 에러 테스트', () => { 
