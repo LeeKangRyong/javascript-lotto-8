@@ -1,6 +1,6 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { Input } from '../views/index.js';
-import { Lotto, Purchase } from '../models/index.js';
+import { Input, Output } from '../views/index.js';
+import { Lotto, Purchase, Calculator } from '../models/index.js';
+import { LottoValidator } from '../models/index.js';
 
 class InputService {
     static async inputPurchase() {
@@ -11,7 +11,7 @@ class InputService {
                 
                 return purchase;
             } catch (error) {
-                MissionUtils.Console.print(error.message);
+                Output.printError(error);
             }
         }
     }
@@ -24,7 +24,7 @@ class InputService {
 
                 return lotto;
             } catch (error) {
-                MissionUtils.Console.print(error.message);
+                Output.printError(error);
             }
         }
     }
@@ -33,11 +33,11 @@ class InputService {
         while (true) {
             try {
                 const bonusNumber = await Input.inputBonusNumber();
-                const lotto = new Lotto(bonusNumber);
+                LottoValidator.isValidBonusNumber(bonusNumber);
 
                 return bonusNumber;
             } catch (error) {
-                MissionUtils.Console.print(error.message);
+                Output.printError(error);
             }
         }
     }

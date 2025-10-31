@@ -19,10 +19,13 @@ class App {
 
     // 6. 당첨 번호 구하기
     const winningNumbers = await InputService.getWinningNumbers();
+    Output.printSpace();
 
     // 7. 보너스 번호 구하기
     const bonusNumber = await InputService.getBonusNumber();
+
     // 8. 당첨 통계 계산하기
+    Output.printCalculatorResult();
 
     // 9. 당첨 통계 출력하기
 

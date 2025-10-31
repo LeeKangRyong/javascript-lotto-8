@@ -1,6 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { LOTTO, LOTTO_ERROR, LottoValidator } from '../index.js';
-import { WoowaError } from '../../shared/index.js';
+import { LOTTO, LottoValidator } from '../index.js';
 
 class Lotto {
   #numbers;
