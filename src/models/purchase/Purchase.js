@@ -1,4 +1,5 @@
-import { NumberValidator } from "../../shared/index.js";
+import { NumberValidator } from '../../shared/index.js';
+import { PurchaseValidator } from './utils/PurchaseValidators.js';
 
 class Purchase {
     #purchasePrice;
@@ -10,6 +11,7 @@ class Purchase {
 
     #validate(purchasePrice) {
         NumberValidator.isValidPositiveIntegerNumber(purchasePrice);
+        PurchaseValidator.isFitOnPurchaseUnit(purchasePrice);
     }
 
 }
