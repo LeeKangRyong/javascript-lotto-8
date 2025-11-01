@@ -1,4 +1,5 @@
-import { CalculatorValidator, CALCULATOR_ERROR } from '../src/models/index.js';
+import { CalculatorValidator, CALCULATOR_ERROR, Calculator, CALCULATOR } from '../src/models/index.js';
+import { CalculatorService } from '../src/services/index.js';
 import { checkErrorMessage } from '../src/shared/index.js';
 
 describe("계산기 클래스 테스트", () => {
@@ -17,6 +18,49 @@ describe("계산기 클래스 테스트", () => {
             expect(() => {
                 CalculatorValidator.isValidBonusNumber(validWinningNumbers, 3);
             }).toThrow(checkErrorMessage(CALCULATOR_ERROR.DUPLICATED_BONUS_NUMBER));
+        });
+    });
+
+    describe("계산기 서비스 클래스 테스트", () => {
+        test("1. 로또 결과를 정상적으로 계산하는지 확인한다.", () => {
+            const calculator = new Calculator({
+                winningNumbers: [1, 2, 3, 4, 5, 6],
+                bonusNumber: 7
+            });
+            const lottoList = [
+                [1, 2, 3, 8, 9, 10],     // 3개 일치
+                [1, 2, 3, 4, 8, 9],      // 4개 일치
+                [1, 2, 3, 4, 5, 8],      // 5개 일치 (보너스 없음)
+                [1, 2, 3, 4, 5, 7],      // 5개 일치 + 보너스
+                [1, 2, 3, 4, 5, 6]       // 6개 일치
+            ];
+
+            const result = CalculatorService.calculateLottoResult(calculator, lottoList);
+
+            expect(result[CALCULATOR.THREE]).toBe(1);
+            expect(result[CALCULATOR.FOUR]).toBe(1);
+            expect(result[CALCULATOR.FIVE]).toBe(1);
+            expect(result[CALCULATOR.FIVE_BONUS]).toBe(1);
+            expect(result[CALCULATOR.SIX]).toBe(1);
+        });
+
+        test("2. 총 수익률을 정상적으로 계산하는지 확인한다.", () => {
+            const calculator = new Calculator({
+                winningNumbers: [1, 2, 3, 4, 5, 6],
+                bonusNumber: 7
+            });
+            const lottoResult = {
+                [CALCULATOR.THREE]: 1,
+                [CALCULATOR.FOUR]: 0,
+                [CALCULATOR.FIVE]: 0,
+                [CALCULATOR.FIVE_BONUS]: 0,
+                [CALCULATOR.SIX]: 0
+            };
+            const purchasePrice = 8000;
+
+            const totalProfit = CalculatorService.calculateTotalProfit(calculator, lottoResult, purchasePrice);
+
+            expect(totalProfit).toBe(62.5);
         });
     });
 });
