@@ -5,9 +5,16 @@ class Lotto {
   #numbers;
 
   constructor(numbers) {
-    const splittedNumbers = this.#splitNumbers(numbers);
+    const splittedNumbers = this.#processNumbers(numbers);
     this.#validate(splittedNumbers);
     this.#numbers = splittedNumbers;
+  }
+
+  #processNumbers(numbers) {
+    if (Array.isArray(numbers)) {
+      return numbers; 
+    }
+    return this.#splitNumbers(numbers);
   }
 
   #splitNumbers(numbers) {
@@ -18,7 +25,7 @@ class Lotto {
   #validate(splittedNumbers) {
     LottoValidator.isValidWinningNumbers(splittedNumbers);
   }
-  
+
   getNumbers() {
     return this.#numbers;
   }
