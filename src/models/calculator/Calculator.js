@@ -1,6 +1,9 @@
 class Calculator {
-    constructor() {}
+    #winningNumbers;
+    #bonusNumber;
 
+    constructor({ winningNumbers, bonusNumber }) {}
+    
 };
 
 export { Calculator };
