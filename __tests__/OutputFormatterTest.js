@@ -2,7 +2,6 @@ import { OutputFormatter, OutputValidator, OUTPUT_FORMAT_ERROR } from '../src/vi
 import { checkErrorMessage } from '../src/shared/index.js';
 
 describe("OutputFormatter 테스트", () => {
-    
     describe("로또 format 테스트", () => {
         test("1. 정상적으로 오름차순 정렬되는 지 확인한다.", () => {
             const mockLotto = [3, 5, 6, 7, 2, 9];
