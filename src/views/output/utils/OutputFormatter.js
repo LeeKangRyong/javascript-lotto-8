@@ -1,12 +1,14 @@
-import { OUTPUT } from './OutputConstants.js';
+// src/views/output/utils/OutputFormatter.js
+import { OUTPUT, OutputValidator } from '../../index.js';
 class OutputFormatter {
 
-    // lotto format (오름차순으로 정렬하기)
     static sortLottobyAsc(lotto) {
-        return lotto.sort((a, b) => a - b);
+        const sorted = lotto.sort((a, b) => a - b);        
+        OutputValidator.isValidLottoFormat(sorted);
+        
+        return sorted;
     }
 
-    // money format (, 넣어주기)
     static formatPrice(price) {
         const formattedPrice = [];
         let stringPrice = [...String(price)].reverse();
@@ -20,13 +22,19 @@ class OutputFormatter {
         formattedPrice.push(stringPrice[stringPriceLength-1]);
 
         stringPrice = formattedPrice.reverse();
-
-        return stringPrice.join('');
+        const result = stringPrice.join('');
+        
+        OutputValidator.isValidPriceFormat(result);
+        
+        return result;
     }
 
-    // 수익률 format (둘째 자리에서 반올림하기, model에서 계산은 정확히)
     static formatProfit(profit) {
-        return profit.toFixed(1);
+        const formatted = profit.toFixed(1);
+        
+        OutputValidator.isValidProfitFormat(formatted);
+        
+        return formatted;
     }
 }
 

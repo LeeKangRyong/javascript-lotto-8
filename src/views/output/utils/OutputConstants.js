@@ -15,4 +15,10 @@ const OUTPUT_CALCULATOR = Object.freeze({
     'PROFIT_FOOTER' : '%입니다.'
 });
 
-export { OUTPUT, OUTPUT_CALCULATOR };
+const OUTPUT_FORMAT_ERROR = Object.freeze({
+    'INVALID_LOTTO_FORMAT' : 'Lotto must be sorted ascending',
+    'INVALID_PRICE_FORMAT' : 'Incorrect position of splitter',
+    'INVALID_PROFIT_FORMAT' : 'Incorrect rounding of profit'
+});
+
+export { OUTPUT, OUTPUT_CALCULATOR, OUTPUT_FORMAT_ERROR };
