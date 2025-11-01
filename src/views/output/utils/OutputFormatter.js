@@ -1,4 +1,3 @@
-// src/views/output/utils/OutputFormatter.js
 import { OUTPUT, OutputValidator } from '../../index.js';
 class OutputFormatter {
 
@@ -10,22 +9,18 @@ class OutputFormatter {
     }
 
     static formatPrice(price) {
-        const formattedPrice = [];
-        let stringPrice = [...String(price)].reverse();
+        const stringPrice = String(price);
         const stringPriceLength = stringPrice.length;
-
-        for (let i = 0; i < stringPriceLength-1; i++) {
-            formattedPrice.push(stringPrice[i]);
-            if (i >= 2 && i % 3 === 2) formattedPrice.push(OUTPUT.SPLITTER);
+        let result = '';
+        
+        for (let i = 0; i < stringPriceLength; i++) {
+            if (i > 0 && (stringPriceLength - i) % 3 === 0) {
+                result += OUTPUT.SPLITTER;
+            }
+            result += stringPrice[i];
         }
-
-        formattedPrice.push(stringPrice[stringPriceLength-1]);
-
-        stringPrice = formattedPrice.reverse();
-        const result = stringPrice.join('');
         
         OutputValidator.isValidPriceFormat(result);
-        
         return result;
     }
 
