@@ -18,6 +18,10 @@ class Lotto {
   #validate(splittedNumbers) {
     LottoValidator.isValidWinningNumbers(splittedNumbers);
   }
+  
+  getNumbers() {
+    return this.#numbers;
+  }
 
   static getLotto() {
     return MissionUtils.Random.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.COUNTS);

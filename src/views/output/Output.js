@@ -22,28 +22,36 @@ class Output {
 
     static printLottoList(lottoList, purchaseCounts) {
         for (let lotto of lottoList) {
-            MissionUtils.Console.print(OutputFormatter.sortLottobyAsc(lotto));
+            let sortedLotto = OutputFormatter.sortLottobyAsc(lotto);
+            MissionUtils.Console.print(`[${sortedLotto.join(OUTPUT.LOTTO_SPLITTER)}]`);
+
         }
         this.printSpace();
     }
 
-    static #calculatorDetailResult(matchingNumberCounts, matchingPrice) {
-        return `${matchingNumberCounts}${OUTPUT_CALCULATOR.MATCHING} (${OutputFormatter.formatPrice(matchingPrice)}${OUTPUT_CALCULATOR.PRICE_UNIT}) - 0${OUTPUT_CALCULATOR.MATCHING_COUNTS}`;
+    static #calculatorDetailResult(matchingNumberCounts, matchingPrice, matchingCounts) {
+        return `${matchingNumberCounts}${OUTPUT_CALCULATOR.MATCHING} (${OutputFormatter.formatPrice(matchingPrice)}${OUTPUT_CALCULATOR.PRICE_UNIT}) - ${matchingCounts}${OUTPUT_CALCULATOR.MATCHING_COUNTS}`;
     }
 
-    static #calculatorBonusDetailResult(matchingNumberCounts, matchingPrice) {
-        return `${matchingNumberCounts}${OUTPUT_CALCULATOR.MATCHING}, ${OUTPUT_CALCULATOR.BONUS} (${OutputFormatter.formatPrice(matchingPrice)}${OUTPUT_CALCULATOR.PRICE_UNIT}) - 0${OUTPUT_CALCULATOR.MATCHING_COUNTS}`;
+    static #calculatorBonusDetailResult(matchingNumberCounts, matchingPrice, matchingCounts) {
+        return `${matchingNumberCounts}${OUTPUT_CALCULATOR.MATCHING}, ${OUTPUT_CALCULATOR.BONUS} (${OutputFormatter.formatPrice(matchingPrice)}${OUTPUT_CALCULATOR.PRICE_UNIT}) - ${matchingCounts}${OUTPUT_CALCULATOR.MATCHING_COUNTS}`;
     }
 
-    static printCalculatorResult(price) {
+    static printCalculatorResult(lottoResult) {
         this.printCalculatorHeader();
-        const formattedPrice = OutputFormatter.formatPrice(price);
-        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.THREE, CALCULATOR_PRICE.THREE_PRICE));
-        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.FOUR, CALCULATOR_PRICE.FOUR_PRICE));
-        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.FIVE, CALCULATOR_PRICE.FIVE_PRICE));
-        MissionUtils.Console.print(this.#calculatorBonusDetailResult(CALCULATOR.FIVE, CALCULATOR_PRICE.FIVE_BONUS_PRICE));
-        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.SIX, CALCULATOR_PRICE.SIX_PRICE));
+        
+        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.THREE, CALCULATOR_PRICE.THREE_PRICE, lottoResult[CALCULATOR.THREE]));
+        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.FOUR, CALCULATOR_PRICE.FOUR_PRICE, lottoResult[CALCULATOR.FOUR]));
+        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.FIVE, CALCULATOR_PRICE.FIVE_PRICE, lottoResult[CALCULATOR.FIVE]));
+        MissionUtils.Console.print(this.#calculatorBonusDetailResult(CALCULATOR.FIVE, CALCULATOR_PRICE.FIVE_BONUS_PRICE, lottoResult[CALCULATOR.FIVE_BONUS]));
+        MissionUtils.Console.print(this.#calculatorDetailResult(CALCULATOR.SIX, CALCULATOR_PRICE.SIX_PRICE, lottoResult[CALCULATOR.SIX]));
     }
+
+    static printTotalProfitResult(totalProfit) {
+        MissionUtils.Console.print(`${OUTPUT_CALCULATOR.PROFIT_HEADER} ${OutputFormatter.formatProfit(totalProfit)}${OUTPUT_CALCULATOR.PROFIT_FOOTER}`);
+    }
+
+
 
     static printError(errorMessage) {
         if (errorMessage instanceof WoowaError) {

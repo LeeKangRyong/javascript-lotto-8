@@ -10,6 +10,10 @@ class Purchase {
         this.#purchasePrice = purchasePrice;
     }
 
+    getPurchasePrice() {
+        return this.#purchasePrice;
+    }
+
     #validate(purchasePrice) {
         NumberValidator.isValidPositiveIntegerNumber(purchasePrice);
         PurchaseValidator.isFitOnPurchaseUnit(purchasePrice);

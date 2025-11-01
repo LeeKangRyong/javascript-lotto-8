@@ -25,6 +25,9 @@ class OutputFormatter {
     }
 
     // 수익률 format (둘째 자리에서 반올림하기, model에서 계산은 정확히)
+    static formatProfit(profit) {
+        return profit.toFixed(1);
+    }
 }
 
 export { OutputFormatter };

@@ -1,5 +1,5 @@
 import { Input, Output } from '../views/index.js';
-import { Lotto, Purchase, Calculator } from '../models/index.js';
+import { Lotto, Purchase } from '../models/index.js';
 import { LottoValidator } from '../models/index.js';
 
 class InputService {
@@ -22,7 +22,7 @@ class InputService {
                 const winningNumbers = await Input.inputWinningNumbers();
                 const lotto = new Lotto(winningNumbers);
 
-                return lotto;
+                return lotto.getNumbers();
             } catch (error) {
                 Output.printError(error);
             }

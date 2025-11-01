@@ -1,6 +1,25 @@
-// 당첨 통계 계산한 거 넣기 (로또 개수만큼) -> 출력할 때 사용
-class CalculatorService {
+import { CALCULATOR } from '../models/index.js';
 
+class CalculatorService {
+    static calculateLottoResult(calculator, lottoList) {
+        const lottoResult = {
+            [CALCULATOR.THREE]: 0,
+            [CALCULATOR.FOUR]: 0,
+            [CALCULATOR.FIVE]: 0,
+            [CALCULATOR.FIVE_BONUS]: 0,
+            [CALCULATOR.SIX]: 0
+        };
+
+        for (let lotto of lottoList) {
+            calculator.calculateMatchingLottoResult(lottoResult, lotto);
+        }
+
+        return lottoResult;
+    }
+
+    static calculateTotalProfit(calculator, lottoResult, purchasePrice) {
+        return calculator.calculateTotalProfitRate(lottoResult, purchasePrice);
+    }
 }
 
 export { CalculatorService };
