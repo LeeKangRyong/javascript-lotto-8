@@ -21,18 +21,18 @@ describe("계산기 클래스 테스트", () => {
         });
     });
 
-    describe("계산기 서비스 클래스 테스트", () => {
+    describe("CalculatorService 테스트", () => {
         test("1. 로또 결과를 정상적으로 계산하는지 확인한다.", () => {
             const calculator = new Calculator({
                 winningNumbers: [1, 2, 3, 4, 5, 6],
                 bonusNumber: 7
             });
             const lottoList = [
-                [1, 2, 3, 8, 9, 10],     // 3개 일치
-                [1, 2, 3, 4, 8, 9],      // 4개 일치
-                [1, 2, 3, 4, 5, 8],      // 5개 일치 (보너스 없음)
-                [1, 2, 3, 4, 5, 7],      // 5개 일치 + 보너스
-                [1, 2, 3, 4, 5, 6]       // 6개 일치
+                [1, 2, 3, 8, 9, 10],
+                [1, 2, 3, 4, 8, 9],
+                [1, 2, 3, 4, 5, 8],
+                [1, 2, 3, 4, 5, 7],
+                [1, 2, 3, 4, 5, 6]
             ];
 
             const result = CalculatorService.calculateLottoResult(calculator, lottoList);

@@ -2,7 +2,7 @@ const CALCULATOR = Object.freeze({
     'THREE' : 3,
     'FOUR' : 4,
     'FIVE' : 5,
-    'FIVE_BONUS' : 5,
+    'FIVE_BONUS' : 'FIVE_BONUS',
     'SIX' : 6
 });
 
