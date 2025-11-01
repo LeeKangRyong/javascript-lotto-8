@@ -45,7 +45,7 @@ describe("OutputFormatter 테스트", () => {
             expect(result).toBe('62.2');
         });
 
-        test("2. 소수점 둘째자리에서 올림되는지 확인", () => {
+        test("2. 소수점 둘째자리에서 올림되는지 확인한다.", () => {
             const mockProfit = 62.5865;
             const result = OutputFormatter.formatProfit(mockProfit);
             
