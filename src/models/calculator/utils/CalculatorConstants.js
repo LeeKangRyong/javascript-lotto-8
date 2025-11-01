@@ -14,4 +14,8 @@ const CALCULATOR_PRICE = Object.freeze({
     'SIX_PRICE' : 2000000000
 });
 
-export { CALCULATOR, CALCULATOR_PRICE };
+const CALCULATOR_ERROR = Object.freeze({
+    'DUPLICATED_BONUS_NUMBER' : 'Bonus number must not be same with winning numbers'
+});
+
+export { CALCULATOR, CALCULATOR_PRICE, CALCULATOR_ERROR };

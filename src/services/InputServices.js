@@ -1,6 +1,5 @@
 import { Input, Output } from '../views/index.js';
-import { Lotto, Purchase } from '../models/index.js';
-import { LottoValidator } from '../models/index.js';
+import { Lotto, Purchase, LottoValidator, CalculatorValidator } from '../models/index.js';
 
 class InputService {
     static async inputPurchase() {
@@ -29,11 +28,12 @@ class InputService {
         }
     }
 
-    static async getBonusNumber() {
+    static async getBonusNumber(winningNumbers) {
         while (true) {
             try {
                 const bonusNumber = await Input.inputBonusNumber();
                 LottoValidator.isValidBonusNumber(bonusNumber);
+                CalculatorValidator.isValidBonusNumber(winningNumbers, bonusNumber)
 
                 return bonusNumber;
             } catch (error) {

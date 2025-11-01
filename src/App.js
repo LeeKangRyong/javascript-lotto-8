@@ -26,7 +26,7 @@ class App {
     Output.printSpace();
 
     // 7. 보너스 번호 구하기
-    const bonusNumber = await InputService.getBonusNumber();
+    const bonusNumber = await InputService.getBonusNumber(winningNumbers);
 
     // 8. Calculator 생성하기
     const calculator = new Calculator({ winningNumbers, bonusNumber });

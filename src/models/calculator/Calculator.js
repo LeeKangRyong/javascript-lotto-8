@@ -1,5 +1,4 @@
-import { CALCULATOR, CALCULATOR_PRICE } from './utils/CalculatorConstants.js';
-
+import { CALCULATOR, CALCULATOR_PRICE } from '../index.js';
 class Calculator {
     #winningNumbers;
     #bonusNumber;
