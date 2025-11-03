@@ -1,12 +1,14 @@
-import { Lotto } from "../models/index.js";
-// 로또 번호 계산하기 (구입 개수만큼)
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { Lotto, LOTTO } from '../models/index.js';
+
 class LottoService {
-    
     static getLottoList(purchaseCounts) {
         const lottoList = [];
         for (let i = 0; i < purchaseCounts; i++) {
-            let lotto = Lotto.getLotto();
-            lottoList.push(lotto);
+            const numbers = MissionUtils.Random.pickUniqueNumbersInRange(LOTTO.MIN, LOTTO.MAX, LOTTO.COUNTS);
+            
+            const lotto = new Lotto(numbers);
+            lottoList.push(lotto.getNumbers());
         }
 
         return lottoList;
@@ -14,4 +16,3 @@ class LottoService {
 }
 
 export { LottoService };
-

@@ -5,15 +5,9 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 describe("로또 클래스 테스트", () => {
     describe("로또 정상 테스트", () => {
-        test("1. 로또 배열로 생성 시 정상 작동하는 지 확인한다.", () => {
+        test("1. 로또 생성 시 정상 작동하는 지 확인한다.", () => {
             expect(() => {
                 new Lotto([1, 2, 3, 4, 5, 6]);
-            }).not.toThrow();
-        });
-
-        test("2. 로또 문자열로 생성 시 정상 작동하는 지 확인한다.", () => {
-            expect(() => {
-                new Lotto("3,5,7,12,41,20");
             }).not.toThrow();
         });
     });

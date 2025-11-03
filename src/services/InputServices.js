@@ -1,5 +1,5 @@
 import { Input, Output } from '../views/index.js';
-import { Lotto, Purchase, LottoValidator, CalculatorValidator } from '../models/index.js';
+import { Lotto, Purchase, LottoValidator, CalculatorValidator, LOTTO } from '../models/index.js';
 
 class InputService {
     static async inputPurchase() {
@@ -19,7 +19,8 @@ class InputService {
         while (true) {
             try {
                 const winningNumbers = await Input.inputWinningNumbers();
-                const lotto = new Lotto(winningNumbers);
+                const winningNumbersSplit = winningNumbers.split(LOTTO.NUMBER_SPLITTER).map(num => +num.trim());
+                const lotto = new Lotto(winningNumbersSplit);
 
                 return lotto.getNumbers();
             } catch (error) {

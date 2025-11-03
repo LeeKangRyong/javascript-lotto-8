@@ -3,7 +3,8 @@ const OUTPUT = Object.freeze({
     'PURCHASE_COUNTS' : '개를 구매했습니다.\n',
     'CALCULATOR_HEADER' : '당첨 통계\n---',
     'LOTTO_SPLITTER' : ', ',
-    'SPLITTER': ','
+    'SPLITTER': ',',
+    'DECIMAL_POINT' : '.'
 });
 
 const OUTPUT_CALCULATOR = Object.freeze({
