@@ -31,7 +31,7 @@ class Lotto {
   }
 
   static getLotto() {
-    return MissionUtils.Random.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.COUNTS);
+    return MissionUtils.Random.pickUniqueNumbersInRange(LOTTO.MIN, LOTTO.MAX, LOTTO.COUNTS);
   }
 }
 

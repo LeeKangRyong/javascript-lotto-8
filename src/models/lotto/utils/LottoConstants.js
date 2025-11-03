@@ -1,6 +1,6 @@
 const LOTTO = Object.freeze({
-    'START' : 1,
-    'END' : 45,
+    'MIN' : 1,
+    'MAX' : 45,
     'COUNTS' : 6,
     'NUMBER_SPLITTER' : ','
 });

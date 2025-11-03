@@ -6,7 +6,7 @@ class LottoValidator {
     }
 
     static #isValidLottoNumber(number) {
-        return number >= LOTTO.START && number <= LOTTO.END;
+        return number >= LOTTO.MIN && number <= LOTTO.MAX;
     }
 
     static #isDuplicatedLottoNumberExists(winningNumbers) {
