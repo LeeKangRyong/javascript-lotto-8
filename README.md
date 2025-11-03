@@ -198,7 +198,6 @@ ____________________________
 **Shared**
 - `WoowaError (shared)` : 에러 메시지 포맷 class
 - `NumberValidator (shared)` : 숫자 검증 class
-``
 
 <br />
 
@@ -276,28 +275,28 @@ ____________________________
 
 <br>
 
-- `OutputTest`
+- `OutputTest`  
 출력 테스트 : 9개  
 에러 출력 테스트 : 2개  
 
 <br>
 
-- `OutputFormatterTest`
-로또 format 테스트 : 2개 
-구입 가격 format 테스트 : 2개
-수익률 format 테스트 : 3개
+- `OutputFormatterTest`  
+로또 format 테스트 : 2개  
+구입 가격 format 테스트 : 2개  
+수익률 format 테스트 : 3개  
 
 <br>
 
-- `InputServiceTest`
+- `InputServiceTest`  
 구입 금액 재입력 테스트 : 4개  
 로또 재입력 테스트 : 4개  
-계산기 재입력 테스트 : 4개
+계산기 재입력 테스트 : 4개  
 
 <br>
 
-- `ErrorTest`
-에러 변환 테스트 : 6개
+- `ErrorTest`  
+에러 변환 테스트 : 6개  
 
 <br />
 
