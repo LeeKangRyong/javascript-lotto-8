@@ -6,7 +6,7 @@ const mockQuestions = (inputs) => {
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
-    
+
     if (input === undefined) {
       throw new Error("No more inputs available");
     }
@@ -205,7 +205,9 @@ describe("로또 테스트", () => {
 
       // then
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("[ERROR]"));
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("1개를 구매했습니다."));
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("1개를 구매했습니다.")
+      );
     });
 
     test("2. 로또에서 3번 재입력이 정상적으로 작동하는지 확인한다.", async () => {
@@ -214,20 +216,35 @@ describe("로또 테스트", () => {
       const RANDOM_NUMBERS_TO_END = [1, 2, 3, 4, 5, 6];
 
       mockRandoms([RANDOM_NUMBERS_TO_END]);
-      mockQuestions(["1000", "1,2,3,4,5", "1,2,3,4,5,5", "1,2,3,4,5,50", "1,2,3,4,5,6", "7"]);
+      mockQuestions([
+        "1000",
+        "1,2,3,4,5",
+        "1,2,3,4,5,5",
+        "1,2,3,4,5,50",
+        "1,2,3,4,5,6",
+        "7",
+      ]);
 
       // when
       const app = new App();
       await app.run();
 
       // then
-      const calls = logSpy.mock.calls.map(call => call[0]);
-      const errorCount = calls.filter(call => call.includes("[ERROR]")).length;
-      
-      expect(errorCount).toBe(3); // 에러 3번 발생
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("1개를 구매했습니다."));
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("[1, 2, 3, 4, 5, 6]"));
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("총 수익률은"));
+      const calls = logSpy.mock.calls.map((call) => call[0]);
+      const errorCount = calls.filter((call) =>
+        call.includes("[ERROR]")
+      ).length;
+
+      expect(errorCount).toBe(3);
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("1개를 구매했습니다.")
+      );
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("[1, 2, 3, 4, 5, 6]")
+      );
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("총 수익률은")
+      );
     });
 
     test("3. 계산기에서 1번 재입력이 정상적으로 작동하는지 확인한다.", async () => {
@@ -245,7 +262,9 @@ describe("로또 테스트", () => {
 
       // then
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("[ERROR]"));
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("총 수익률은"));
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("총 수익률은")
+      );
     });
 
     test("4. 구입 개수에서 1번, 로또에서 2번, 계산기에서 1번 재입력이 정상적으로 작동하는지 확인한다.", async () => {
@@ -262,7 +281,7 @@ describe("로또 테스트", () => {
         "1,2,3,4,5,5",
         "1,2,3,4,5,6",
         "3",
-        "7"
+        "7",
       ]);
 
       // when
@@ -270,10 +289,14 @@ describe("로또 테스트", () => {
       await app.run();
 
       // then
-      const calls = logSpy.mock.calls.map(call => call[0]);
-      const errorCount = calls.filter(call => call.includes("[ERROR]")).length;
+      const calls = logSpy.mock.calls.map((call) => call[0]);
+      const errorCount = calls.filter((call) =>
+        call.includes("[ERROR]")
+      ).length;
       expect(errorCount).toBe(4);
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("총 수익률은"));
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("총 수익률은")
+      );
     });
   });
 });

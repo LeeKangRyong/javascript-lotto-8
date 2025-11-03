@@ -1,7 +1,11 @@
-import { InputService, LottoService, CalculatorService } from './services/index.js';
-import { Calculator } from './models/index.js';
-import { Output } from './views/index.js';
-import { PURCHASE_UNIT } from './models/purchase/utils/PurchaseConstants.js';
+import {
+  InputService,
+  LottoService,
+  CalculatorService,
+} from "./services/index.js";
+import { Calculator } from "./models/index.js";
+import { Output } from "./views/index.js";
+import { PURCHASE_UNIT } from "./models/purchase/utils/PurchaseConstants.js";
 
 class App {
   async run() {
@@ -32,13 +36,20 @@ class App {
     const calculator = new Calculator({ winningNumbers, bonusNumber });
 
     // 9. 당첨 통계 계산하기
-    const lottoResult = CalculatorService.calculateLottoResult(calculator, lottoList);
+    const lottoResult = CalculatorService.calculateLottoResult(
+      calculator,
+      lottoList
+    );
 
     // 10. 당첨 통계 출력하기
     Output.printCalculatorResult(lottoResult);
 
     // 11. 수익률 계산하기
-    const totalProfit = CalculatorService.calculateTotalProfit(calculator, lottoResult, purchasePrice);
+    const totalProfit = CalculatorService.calculateTotalProfit(
+      calculator,
+      lottoResult,
+      purchasePrice
+    );
 
     // 12. 수익률 출력하기
     Output.printTotalProfitResult(totalProfit);

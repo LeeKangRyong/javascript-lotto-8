@@ -1,28 +1,27 @@
-import { NumberValidator } from '../../shared/index.js';
-import { PurchaseValidator } from './utils/PurchaseValidators.js';
-import { PURCHASE_UNIT } from './utils/PurchaseConstants.js';
+import { NumberValidator } from "../../shared/index.js";
+import { PurchaseValidator } from "./utils/PurchaseValidators.js";
+import { PURCHASE_UNIT } from "./utils/PurchaseConstants.js";
 
 class Purchase {
-    #purchasePrice;
+  #purchasePrice;
 
-    constructor(purchasePrice) {
-        this.#validate(purchasePrice);
-        this.#purchasePrice = purchasePrice;
-    }
+  constructor(purchasePrice) {
+    this.#validate(purchasePrice);
+    this.#purchasePrice = purchasePrice;
+  }
 
-    getPurchasePrice() {
-        return this.#purchasePrice;
-    }
+  getPurchasePrice() {
+    return this.#purchasePrice;
+  }
 
-    #validate(purchasePrice) {
-        NumberValidator.isValidPositiveIntegerNumber(purchasePrice);
-        PurchaseValidator.isFitOnPurchaseUnit(purchasePrice);
-    }
+  #validate(purchasePrice) {
+    NumberValidator.isValidPositiveIntegerNumber(purchasePrice);
+    PurchaseValidator.isFitOnPurchaseUnit(purchasePrice);
+  }
 
-    calculateCounts() {
-        return this.#purchasePrice / PURCHASE_UNIT;
-    }
-
+  calculateCounts() {
+    return this.#purchasePrice / PURCHASE_UNIT;
+  }
 }
 
 export { Purchase };
