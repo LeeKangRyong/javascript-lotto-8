@@ -262,26 +262,26 @@ ____________________________
 <br>
 
 ### 단위 테스트
-- `NumberTest`
+- `NumberTest`  
 정상 테스트 : 1개  
 예외 테스트 : 4개  
 
 <br>
 
-- `PurchaseTest`
+- `PurchaseTest`  
 정상 테스트 : 1개  
 예외 테스트 : 6개  
 
 <br>
 
-- `LottoTest`
+- `LottoTest`  
 정상 테스트 : 1개  
 예외 테스트 : 5개  
 서비스 테스트 : 2개
 
 <br>
 
-- `CalculatorTest`
+- `CalculatorTest`  
 정상 테스트 : 1개  
 예외 테스트 : 1개  
 서비스 테스트 : 2개  
